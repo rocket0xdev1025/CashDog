@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$CASHDOG — CashDog on Solana | Sending on RobinHood</title>
+  <meta name="description" content="$CashDog are sending on RobinHood. $CASHDOG on Sol becomes the obvious runner. Buy the dog. Catch the cash." />
+  <meta property="og:title" content="CashDog ($CASHDOG) — Solana Meme Runner" />
+  <meta property="og:description" content="$Cashdog are sending on RobinHood | $CashDog on Sol becomes obvious runner" />
+  <meta property="og:image" content="banner.png" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            pixel: ['"Press Start 2P"', 'cursive'],
+            retro: ['"VT323"', 'monospace'],
+          },
+          colors: {
+            dog: {
+              gold: '#FFD93D',
+              orange: '#FF6B2C',
+              pink: '#FF4D9E',
+              purple: '#7B2FFF',
+              cyan: '#00F5FF',
+              green: '#39FF14',
+              dark: '#0A0612',
+              panel: '#140C22',
+              border: '#3D2A5C',
+            },
+          },
+          boxShadow: {
+            pixel: '4px 4px 0 0 #000',
+            'pixel-lg': '6px 6px 0 0 #000',
+            'pixel-glow': '0 0 20px rgba(255, 217, 61, 0.45)',
+            neon: '0 0 12px rgba(0, 245, 255, 0.6)',
+          },
+          animation: {
+            blink: 'blink 1.2s step-end infinite',
+            float: 'float 3s ease-in-out infinite',
+            marquee: 'marquee 28s linear infinite',
+            pulse-glow: 'pulseGlow 2s ease-in-out infinite',
+            wiggle: 'wiggle 0.8s ease-in-out infinite',
+          },
+          keyframes: {
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 12px rgba(255, 217, 61, 0.4)' },
+              '50%': { boxShadow: '0 0 28px rgba(255, 107, 44, 0.8)' },
+            },
+            wiggle: {
+              '0%, 100%': { transform: 'rotate(-2deg)' },
+              '50%': { transform: 'rotate(2deg)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { image-rendering: pixelated; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0A0612;
+      background-image:
+        linear-gradient(rgba(123, 47, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123, 47, 255, 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    /* CRT scanlines */
+    body::before {
+      content: '';
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.12) 0px,
+        rgba(0, 0, 0, 0.12) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+    }
+    .pixel-border {
+      border: 4px solid #000;
+      box-shadow:
+        inset -4px -4px 0 0 rgba(0, 0, 0, 0.35),
+        inset 4px 4px 0 0 rgba(255, 255, 255, 0.12),
+        4px 4px 0 0 #000;
+    }
+    .pixel-btn {
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 0 #000;
+      transition: transform 0.08s, box-shadow 0.08s;
+    }
+    .pixel-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 0 #000;
+    }
+    .pixel-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 0 #000;
+    }
+    .clip-banner {
+      clip-path: polygon(
+        0 8%, 2% 0, 98% 0, 100% 8%,
+        100% 92%, 98% 100%, 2% 100%, 0 92%
+      );
+    }
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-card img {
+      transition: transform 0.25s ease;
+    }
+    /* custom scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #140C22; }
+    ::-webkit-scrollbar-thumb { background: #FFD93D; border: 2px solid #000; }
+  </style>
+</head>
+<body class="text-white font-retro text-xl overflow-x-hidden">
+
+  <!-- TOP MARQUEE -->
+  <div class="bg-dog-gold text-black border-b-4 border-black overflow-hidden py-2 relative z-50">
+    <div class="flex whitespace-nowrap animate-marquee font-pixel text-[10px] sm:text-xs tracking-wider">
+      <span class="mx-6">$CASHDOG ARE SENDING ON ROBINHOOD</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">$CASHDOG ON SOL BECOMES OBVIOUS RUNNER</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">BUY THE DOG · CATCH THE CASH</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">WOOF WOOF TO THE MOON</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">$CASHDOG ARE SENDING ON ROBINHOOD</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">$CASHDOG ON SOL BECOMES OBVIOUS RUNNER</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">BUY THE DOG · CATCH THE CASH</span>
+      <span class="mx-6">★</span>
+      <span class="mx-6">WOOF WOOF TO THE MOON</span>
+      <span class="mx-6">★</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 bg-dog-panel/95 backdrop-blur border-b-4 border-black">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <a href="#home" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="CashDog logo" class="w-12 h-12 sm:w-14 sm:h-14 pixel-border bg-dog-gold object-cover animate-float" />
+        <div>
+          <p class="font-pixel text-dog-gold text-xs sm:text-sm group-hover:text-dog-orange transition">CASHDOG</p>
+          <p class="font-retro text-dog-cyan text-lg leading-none">$CASHDOG</p>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-1 font-pixel text-[10px]">
+        <a href="#about" class="px-3 py-2 hover:bg-dog-purple hover:text-white transition">ABOUT</a>
+        <a href="#howtobuy" class="px-3 py-2 hover:bg-dog-purple hover:text-white transition">HOW TO BUY</a>
+        <a href="#chart" class="px-3 py-2 hover:bg-dog-purple hover:text-white transition">CHART</a>
+        <a href="#gallery" class="px-3 py-2 hover:bg-dog-purple hover:text-white transition">GALLERY</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="https://t.me/CashDogSol_portal" target="_blank" rel="noopener noreferrer"
+           class="pixel-btn bg-dog-cyan p-1.5 hover:bg-white" title="Telegram">
+          <img src="tg.png" alt="Telegram" class="w-7 h-7 sm:w-8 sm:h-8 object-contain" />
+        </a>
+        <a href="https://x.com/catcoinsolx" target="_blank" rel="noopener noreferrer"
+           class="pixel-btn bg-white p-1.5 hover:bg-dog-gold" title="Twitter / X">
+          <img src="x.png" alt="Twitter" class="w-7 h-7 sm:w-8 sm:h-8 object-contain" />
+        </a>
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA"
+           target="_blank" rel="noopener noreferrer"
+           class="pixel-btn hidden sm:inline-block bg-dog-green text-black font-pixel text-[10px] px-3 py-2.5 hover:bg-dog-gold">
+          BUY NOW
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="relative max-w-6xl mx-auto px-4 pt-8 pb-12 sm:pt-12 sm:pb-16">
+    <div class="text-center mb-6">
+      <p class="font-pixel text-dog-pink text-[10px] sm:text-xs mb-3 tracking-widest">
+        <span class="animate-blink">▶</span> SOLANA MEME · PIXEL RUNNER
+      </p>
+      <h1 class="font-pixel text-3xl sm:text-5xl md:text-6xl text-dog-gold drop-shadow-[4px_4px_0_#000] mb-3 leading-tight">
+        CASHDOG
+      </h1>
+      <p class="font-pixel text-dog-cyan text-xs sm:text-sm mb-2">$CASHDOG</p>
+      <p class="font-retro text-2xl sm:text-3xl text-white/90 max-w-2xl mx-auto leading-tight">
+        $Cashdog are sending on RobinHood<br class="hidden sm:block" />
+        <span class="text-dog-orange">$CashDog on Sol becomes obvious runner</span>
+      </p>
+    </div>
+
+    <!-- Banner -->
+    <div class="relative mx-auto max-w-4xl mb-8">
+      <div class="pixel-border overflow-hidden bg-dog-panel animate-pulse-glow">
+        <img src="banner.png" alt="CashDog banner" class="w-full h-auto object-cover clip-banner" />
+      </div>
+      <div class="absolute -bottom-4 -right-2 sm:-right-4 bg-dog-pink text-black font-pixel text-[9px] sm:text-[10px] px-3 py-2 pixel-border rotate-3 animate-wiggle">
+        WOOF → MOON
+      </div>
+    </div>
+
+    <!-- CA + CTAs -->
+    <div class="max-w-3xl mx-auto space-y-5">
+      <div class="pixel-border bg-dog-panel p-4 sm:p-5">
+        <p class="font-pixel text-[10px] text-dog-gold mb-3 text-center">CONTRACT ADDRESS</p>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <code id="ca-display"
+                class="flex-1 bg-black/60 border-2 border-dog-border px-3 py-3 font-retro text-lg sm:text-xl text-dog-green break-all text-center sm:text-left select-all">
+            TBA
+          </code>
+          <button id="copy-ca"
+                  type="button"
+                  class="pixel-btn bg-dog-gold text-black font-pixel text-[10px] px-5 py-3 hover:bg-dog-orange whitespace-nowrap">
+            COPY CA
+          </button>
+        </div>
+        <p id="copy-toast" class="text-center font-pixel text-[9px] text-dog-green mt-3 h-4 opacity-0 transition-opacity">
+          COPIED TO CLIPBOARD!
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA"
+           target="_blank" rel="noopener noreferrer"
+           class="pixel-btn bg-dog-green text-black font-pixel text-xs sm:text-sm px-8 py-4 text-center hover:bg-dog-gold">
+          🐕 BUY NOW
+        </a>
+        <a href="https://dexscreener.com/solana/TBA"
+           target="_blank" rel="noopener noreferrer"
+           class="pixel-btn bg-dog-cyan text-black font-pixel text-xs sm:text-sm px-8 py-4 text-center hover:bg-white">
+          📈 CHART
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <div class="pixel-border bg-dog-panel p-6 sm:p-8 relative">
+        <div class="absolute -top-3 left-4 bg-dog-purple font-pixel text-[9px] px-3 py-1 border-2 border-black">
+          LORE
+        </div>
+        <h2 class="font-pixel text-dog-gold text-sm sm:text-base mb-5">WHAT IS CASHDOG?</h2>
+        <p class="font-retro text-2xl sm:text-3xl text-white/90 leading-snug mb-4">
+          CashDog is the pixel pup of Solana — a cash-hungry meme dog that sniffs out green candles and barks at every runner.
+        </p>
+        <p class="font-retro text-xl sm:text-2xl text-dog-cyan leading-snug mb-4">
+          When $Cashdog start sending on RobinHood vibes, the timeline goes feral. On Sol, <span class="text-dog-gold">$CASHDOG</span> is the obvious play.
+        </p>
+        <ul class="space-y-2 font-retro text-xl text-white/80">
+          <li class="flex items-start gap-2"><span class="text-dog-green">▸</span> Community-driven meme energy</li>
+          <li class="flex items-start gap-2"><span class="text-dog-green">▸</span> Pure Solana speed & degen culture</li>
+          <li class="flex items-start gap-2"><span class="text-dog-green">▸</span> Retro pixel aesthetics · zero boring vibes</li>
+          <li class="flex items-start gap-2"><span class="text-dog-green">▸</span> Symbol: <span class="text-dog-gold font-pixel text-sm">$CASHDOG</span></li>
+        </ul>
+      </div>
+      <div class="flex justify-center">
+        <div class="relative">
+          <img src="logo.png" alt="CashDog" class="w-56 h-56 sm:w-72 sm:h-72 object-cover pixel-border bg-dog-gold animate-float shadow-pixel-glow" />
+          <div class="absolute -top-4 -left-4 bg-dog-orange text-black font-pixel text-[9px] px-2 py-1 border-2 border-black -rotate-6">
+            GOOD BOY
+          </div>
+          <div class="absolute -bottom-3 -right-3 bg-dog-green text-black font-pixel text-[9px] px-2 py-1 border-2 border-black rotate-3">
+            $CASHDOG
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKEN STATS STRIP -->
+  <section class="border-y-4 border-black bg-dog-purple/40 py-6">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div class="pixel-border bg-dog-panel p-4">
+        <p class="font-pixel text-[9px] text-dog-cyan mb-2">CHAIN</p>
+        <p class="font-pixel text-sm text-dog-gold">SOLANA</p>
+      </div>
+      <div class="pixel-border bg-dog-panel p-4">
+        <p class="font-pixel text-[9px] text-dog-cyan mb-2">SYMBOL</p>
+        <p class="font-pixel text-sm text-dog-gold">$CASHDOG</p>
+      </div>
+      <div class="pixel-border bg-dog-panel p-4">
+        <p class="font-pixel text-[9px] text-dog-cyan mb-2">STYLE</p>
+        <p class="font-pixel text-sm text-dog-gold">PIXEL MEME</p>
+      </div>
+      <div class="pixel-border bg-dog-panel p-4">
+        <p class="font-pixel text-[9px] text-dog-cyan mb-2">STATUS</p>
+        <p class="font-pixel text-sm text-dog-green animate-blink">SENDING</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section id="howtobuy" class="max-w-6xl mx-auto px-4 py-14 sm:py-20">
+    <div class="text-center mb-10">
+      <p class="font-pixel text-dog-pink text-[10px] mb-3">QUEST LOG</p>
+      <h2 class="font-pixel text-dog-gold text-base sm:text-xl drop-shadow-[3px_3px_0_#000]">HOW TO BUY $CASHDOG</h2>
+      <p class="font-retro text-2xl text-white/70 mt-3">4 easy steps · use SOL · become a CashDog</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- Step 1 -->
+      <div class="pixel-border bg-dog-panel p-5 relative group hover:-translate-y-1 transition-transform">
+        <div class="absolute -top-3 -left-2 w-10 h-10 bg-dog-gold text-black font-pixel text-sm flex items-center justify-center border-2 border-black shadow-pixel">
+          1
+        </div>
+        <div class="mt-4 mb-3 text-4xl">👛</div>
+        <h3 class="font-pixel text-dog-cyan text-[11px] mb-3 leading-relaxed">GET A WALLET</h3>
+        <p class="font-retro text-xl text-white/85 leading-snug">
+          Download <span class="text-dog-gold">Phantom</span> or <span class="text-dog-gold">Solflare</span>. Create a wallet and keep your seed phrase offline & safe.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="pixel-border bg-dog-panel p-5 relative group hover:-translate-y-1 transition-transform">
+        <div class="absolute -top-3 -left-2 w-10 h-10 bg-dog-orange text-black font-pixel text-sm flex items-center justify-center border-2 border-black shadow-pixel">
+          2
+        </div>
+        <div class="mt-4 mb-3 text-4xl">◎</div>
+        <h3 class="font-pixel text-dog-cyan text-[11px] mb-3 leading-relaxed">FUND WITH SOL</h3>
+        <p class="font-retro text-xl text-white/85 leading-snug">
+          Buy SOL on an exchange, then send it to your Solana wallet address. You'll need SOL for swap + gas.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="pixel-border bg-dog-panel p-5 relative group hover:-translate-y-1 transition-transform">
+        <div class="absolute -top-3 -left-2 w-10 h-10 bg-dog-pink text-black font-pixel text-sm flex items-center justify-center border-2 border-black shadow-pixel">
+          3
+        </div>
+        <div class="mt-4 mb-3 text-4xl">🔗</div>
+        <h3 class="font-pixel text-dog-cyan text-[11px] mb-3 leading-relaxed">OPEN PUMP SWAP</h3>
+        <p class="font-retro text-xl text-white/85 leading-snug">
+          Hit <span class="text-dog-green">BUY NOW</span> or open pump.fun swap. Paste the $CASHDOG CA if needed and connect your wallet.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="pixel-border bg-dog-panel p-5 relative group hover:-translate-y-1 transition-transform">
+        <div class="absolute -top-3 -left-2 w-10 h-10 bg-dog-green text-black font-pixel text-sm flex items-center justify-center border-2 border-black shadow-pixel">
+          4
+        </div>
+        <div class="mt-4 mb-3 text-4xl">🚀</div>
+        <h3 class="font-pixel text-dog-cyan text-[11px] mb-3 leading-relaxed">SWAP SOL → $CASHDOG</h3>
+        <p class="font-retro text-xl text-white/85 leading-snug">
+          Enter SOL amount, confirm the swap, and boom — you're packing $CASHDOG. Welcome to the pack, runner.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA"
+         target="_blank" rel="noopener noreferrer"
+         class="pixel-btn bg-dog-green text-black font-pixel text-xs px-8 py-4 text-center hover:bg-dog-gold">
+        BUY $CASHDOG NOW
+      </a>
+      <a href="https://dexscreener.com/solana/TBA"
+         target="_blank" rel="noopener noreferrer"
+         class="pixel-btn bg-dog-purple text-white font-pixel text-xs px-8 py-4 text-center hover:bg-dog-pink">
+        VIEW LIVE CHART
+      </a>
+    </div>
+  </section>
+
+  <!-- CHART / DEXSCREENER EMBED -->
+  <section id="chart" class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <div class="text-center mb-8">
+      <p class="font-pixel text-dog-pink text-[10px] mb-3">LIVE DATA</p>
+      <h2 class="font-pixel text-dog-gold text-base sm:text-xl drop-shadow-[3px_3px_0_#000]">CHART</h2>
+      <p class="font-retro text-2xl text-white/70 mt-3">Dexscreener · Solana · $CASHDOG</p>
+    </div>
+
+    <div class="pixel-border bg-dog-panel p-2 sm:p-3 overflow-hidden">
+      <div class="w-full h-[420px] sm:h-[520px] bg-black/50 relative">
+        <iframe
+          id="dex-embed"
+          title="CashDog Dexscreener Chart"
+          src="https://dexscreener.com/solana/TBA?embed=1&theme=dark&trades=0&info=0"
+          class="w-full h-full border-0"
+          loading="lazy"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="mt-5 flex flex-wrap gap-3 justify-center">
+      <a href="https://dexscreener.com/solana/TBA"
+         target="_blank" rel="noopener noreferrer"
+         class="pixel-btn bg-dog-cyan text-black font-pixel text-[10px] px-5 py-3 hover:bg-white">
+        OPEN DEXSCREENER ↗
+      </a>
+      <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA"
+         target="_blank" rel="noopener noreferrer"
+         class="pixel-btn bg-dog-green text-black font-pixel text-[10px] px-5 py-3 hover:bg-dog-gold">
+        BUY ON PUMP ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <div class="text-center mb-10">
+      <p class="font-pixel text-dog-pink text-[10px] mb-3">MEME ARSENAL</p>
+      <h2 class="font-pixel text-dog-gold text-base sm:text-xl drop-shadow-[3px_3px_0_#000]">GALLERY</h2>
+      <p class="font-retro text-2xl text-white/70 mt-3">Pixel proof the dog is cooking</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
+      <figure class="gallery-card pixel-border bg-dog-panel overflow-hidden group cursor-pointer">
+        <div class="aspect-square overflow-hidden bg-black/40">
+          <img src="assets/1.png" alt="CashDog meme 1" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <figcaption class="font-pixel text-[9px] text-center py-2 text-dog-cyan border-t-2 border-black bg-black/30">
+          #01 · WOOF
+        </figcaption>
+      </figure>
+      <figure class="gallery-card pixel-border bg-dog-panel overflow-hidden group cursor-pointer">
+        <div class="aspect-square overflow-hidden bg-black/40">
+          <img src="assets/2.png" alt="CashDog meme 2" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <figcaption class="font-pixel text-[9px] text-center py-2 text-dog-cyan border-t-2 border-black bg-black/30">
+          #02 · CASH
+        </figcaption>
+      </figure>
+      <figure class="gallery-card pixel-border bg-dog-panel overflow-hidden group cursor-pointer">
+        <div class="aspect-square overflow-hidden bg-black/40">
+          <img src="assets/3.png" alt="CashDog meme 3" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <figcaption class="font-pixel text-[9px] text-center py-2 text-dog-cyan border-t-2 border-black bg-black/30">
+          #03 · RUNNER
+        </figcaption>
+      </figure>
+      <figure class="gallery-card pixel-border bg-dog-panel overflow-hidden group cursor-pointer">
+        <div class="aspect-square overflow-hidden bg-black/40">
+          <img src="assets/4.png" alt="CashDog meme 4" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <figcaption class="font-pixel text-[9px] text-center py-2 text-dog-cyan border-t-2 border-black bg-black/30">
+          #04 · SOL
+        </figcaption>
+      </figure>
+      <figure class="gallery-card pixel-border bg-dog-panel overflow-hidden group cursor-pointer">
+        <div class="aspect-square overflow-hidden bg-black/40">
+          <img src="assets/5.png" alt="CashDog meme 5" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <figcaption class="font-pixel text-[9px] text-center py-2 text-dog-cyan border-t-2 border-black bg-black/30">
+          #05 · SEND
+        </figcaption>
+      </figure>
+      <figure class="gallery-card pixel-border bg-dog-panel overflow-hidden group cursor-pointer">
+        <div class="aspect-square overflow-hidden bg-black/40">
+          <img src="assets/6.png" alt="CashDog meme 6" class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <figcaption class="font-pixel text-[9px] text-center py-2 text-dog-cyan border-t-2 border-black bg-black/30">
+          #06 · MOON
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <div class="pixel-border bg-gradient-to-r from-dog-purple via-dog-pink to-dog-orange p-1">
+      <div class="bg-dog-dark/90 p-8 sm:p-10 text-center">
+        <img src="logo.png" alt="" class="w-16 h-16 mx-auto mb-4 pixel-border bg-dog-gold object-cover animate-float" />
+        <h2 class="font-pixel text-dog-gold text-sm sm:text-lg mb-3 leading-relaxed">
+          JOIN THE PACK
+        </h2>
+        <p class="font-retro text-2xl sm:text-3xl text-white mb-6 max-w-xl mx-auto">
+          $Cashdog are sending. Don't be the last one to bark.
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center items-center">
+          <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA"
+             target="_blank" rel="noopener noreferrer"
+             class="pixel-btn bg-dog-green text-black font-pixel text-xs px-6 py-4 hover:bg-dog-gold">
+            BUY NOW
+          </a>
+          <a href="https://t.me/CashDogSol_portal" target="_blank" rel="noopener noreferrer"
+             class="pixel-btn bg-dog-cyan text-black font-pixel text-xs px-4 py-3 flex items-center gap-2 hover:bg-white">
+            <img src="tg.png" alt="" class="w-6 h-6 object-contain" /> TELEGRAM
+          </a>
+          <a href="https://x.com/catcoinsolx" target="_blank" rel="noopener noreferrer"
+             class="pixel-btn bg-white text-black font-pixel text-xs px-4 py-3 flex items-center gap-2 hover:bg-dog-gold">
+            <img src="x.png" alt="" class="w-6 h-6 object-contain" /> TWITTER
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t-4 border-black mt-10 bg-dog-panel">
+    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="CashDog" class="w-10 h-10 pixel-border bg-dog-gold object-cover" />
+        <div>
+          <p class="font-pixel text-dog-gold text-[10px]">CASHDOG</p>
+          <p class="font-retro text-lg text-white/60">$CASHDOG · Solana</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/CashDogSol_portal" target="_blank" rel="noopener noreferrer" class="pixel-btn bg-dog-cyan p-1.5">
+          <img src="tg.png" alt="Telegram" class="w-7 h-7 object-contain" />
+        </a>
+        <a href="https://x.com/catcoinsolx" target="_blank" rel="noopener noreferrer" class="pixel-btn bg-white p-1.5">
+          <img src="x.png" alt="X" class="w-7 h-7 object-contain" />
+        </a>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer"
+           class="font-pixel text-[9px] text-dog-cyan hover:text-dog-gold underline underline-offset-4">
+          CHART
+        </a>
+      </div>
+      <p class="font-retro text-lg text-white/40 text-center sm:text-right">
+        NFA · DYOR · meme coin · have fun 🐕
+      </p>
+    </div>
+    <div class="bg-black py-2 text-center font-pixel text-[8px] text-dog-gold/70 tracking-widest">
+      $CASHDOG ARE SENDING ON ROBINHOOD · $CASHDOG ON SOL BECOMES OBVIOUS RUNNER
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX (simple) -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 p-4" role="dialog" aria-modal="true">
+    <button id="lightbox-close" type="button" class="absolute top-4 right-4 pixel-btn bg-dog-pink text-black font-pixel text-xs px-4 py-3">
+      CLOSE
+    </button>
+    <img id="lightbox-img" src="" alt="Gallery full size" class="max-w-full max-h-[85vh] pixel-border object-contain" />
+  </div>
+
+  <script>
+    // Contract address — update when live
+    const CA = 'TBA';
+
+    const caDisplay = document.getElementById('ca-display');
+    const copyBtn = document.getElementById('copy-ca');
+    const toast = document.getElementById('copy-toast');
+
+    caDisplay.textContent = CA;
+
+    async function copyCA() {
+      try {
+        await navigator.clipboard.writeText(CA);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(caDisplay);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand('copy');
+        sel.removeAllRanges();
+      }
+      toast.style.opacity = '1';
+      copyBtn.textContent = 'COPIED!';
+      copyBtn.classList.add('bg-dog-green');
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        copyBtn.textContent = 'COPY CA';
+        copyBtn.classList.remove('bg-dog-green');
+      }, 1800);
+    }
+
+    copyBtn.addEventListener('click', copyCA);
+
+    // Gallery lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.gallery-card img').forEach((img) => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
